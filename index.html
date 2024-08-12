@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satış Uygulaması</title>
+</head>
+<body>
+    <h1>Satış Uygulaması</h1>
+
+    <div>
+        <h2>Ürün Ekle/Güncelle</h2>
+        <label for="barcode">Barkod:</label>
+        <input type="text" id="barcode">
+        <button onclick="startBarcodeScanner()">Barkod Tara</button>
+        <label for="price">Fiyat:</label>
+        <input type="number" id="price">
+        <label for="profit">Kar:</label>
+        <input type="number" id="profit">
+        <button onclick="addOrUpdateProduct()">Ürün Ekle/Güncelle</button>
+    </div>
+
+    <div>
+        <h2>Satış Türleri</h2>
+        <button onclick="openSalePage('Nakit')">Nakit</button>
+        <button onclick="openSalePage('Kart')">Kart</button>
+        <button onclick="openSalePage('Veresiye')">Veresiye</button>
+    </div>
+
+    <div>
+        <h2>Satış Özetleri</h2>
+        <p>Nakit Satış: <span id="nakitSales">0</span> TL</p>
+        <p>Kart Satış: <span id="kartSales">0</span> TL</p>
+        <p>Veresiye Satış: <span id="veresiyeSales">0</span> TL</p>
+        <button onclick="saveDailyData()">Günü Kaydet</button>
+    </div>
+
+    <div id="salePage" style="display: none;">
+        <h2 id="saleType"></h2>
+        <label for="saleBarcode">Barkod:</label>
+        <input type="text" id="saleBarcode" oninput="scanProduct()">
+        <button onclick="startBarcodeScanner()">Barkod Tara</button>
+        <p>Toplam Fiyat: <span id="totalPrice">0</span> TL</p>
+        <p>Toplam Kar: <span id="totalProfit">0</span> TL</p>
+        <button onclick="completeSale()">Satışı Bitir</button>
+        <button onclick="closeSalePage()">Sayfayı Kapat</button>
+    </div>
+
+    <div id="interactive" class="viewport"></div>
+    <p id="barcodeResult"></p>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
